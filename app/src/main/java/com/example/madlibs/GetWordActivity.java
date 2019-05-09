@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.KeyListener;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,7 @@ public class GetWordActivity extends AppCompatActivity {
     RadioButton radioButton, radioButton2, radioButton3, radioButton4, radioButton5;
     RadioGroup radioGroup;
     EditText word;
+    KeyListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,8 @@ public class GetWordActivity extends AppCompatActivity {
         word = findViewById(R.id.editText3);
 
         textView = findViewById(R.id.textView);
+        listener = word.getKeyListener();
+        word.setKeyListener(null);
     }
 
 
@@ -73,6 +77,7 @@ public class GetWordActivity extends AppCompatActivity {
         story = new Story(inputStream);
 
         word.setHint(story.getNextPlaceholder());
+        word.setKeyListener(listener);
         int wordsLeft = story.getPlaceholderRemainingCount();
         textView.setText(wordsLeft + "word(s) left");
     }

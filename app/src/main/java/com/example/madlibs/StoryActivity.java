@@ -21,7 +21,7 @@ public class StoryActivity extends AppCompatActivity {
     }
 
     // this event is fired when the button is clicked to go back to the story-pick page
-    public void pickStory(View view) {
+    public void story(View view) {
         Intent intent = new Intent(this, GetWordActivity.class);
         startActivity(intent);
 
